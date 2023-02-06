@@ -11,7 +11,12 @@ Clients=pd.read_csv('Numbers/Clients.csv')
 
 Clients=Clients.values.tolist()
 
- 
+PhoneNumbers=[]
+for i in Clients:
+    string = re.sub('[\W\_]','',str(i))
+    no = '+'+str(string)
+    PhoneNumbers.append(no)
+
 import time
 import webbrowser as web
 from datetime import datetime
@@ -95,7 +100,8 @@ def check_if_string_in_file(file_name, string_to_search):
                 return True
     return False
 
-No = ["+254113927737", "+254784116116", "+254799844628"]
+ 
+#No = ["+254113927737", "+254784116116", "+254799844628"]
 
 
 message = 'Hello, My name is Francis. I\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!'
@@ -105,7 +111,7 @@ img_path= "./Image1.jpeg"
 
 
 
-for i in No:
+for i in PhoneNumbers:
     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
 #         print(f'{i} already Exists in Database')
         pass
