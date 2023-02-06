@@ -2,7 +2,7 @@
 """
 Created on Mon Feb  6 17:20:25 2023
 
-@author: User
+@author: Francis
 """
 
 import pandas as pd
@@ -10,19 +10,8 @@ import re
 Clients=pd.read_csv('Numbers/Clients.csv')
 
 Clients=Clients.values.tolist()
-type(Clients)
 
-
-client_No=[]
-for i in Clients:
-    string = re.sub('[\W\_]','',str(i))
-    no = '+'+str(string)
-    client_No.append(no)
-    
-    
-del Clients # Delete the dataframe to save memory
-
-
+ 
 import time
 import webbrowser as web
 from datetime import datetime
