@@ -8,7 +8,7 @@ Created on Wed Feb  8 20:20:54 2023
 import os
 import time
 
-from whatsender.whatsend.core import check_number
+from academic_whatapp.whatsend.core import check_number
 
 
 def format_message(message: str) -> str:

@@ -16,7 +16,7 @@ from webbrowser import open
 import requests
 from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
 
-from whatsender.whatsend.exceptions import InternetException
+from academic_whatapp.whatsend.exceptions import InternetException
 
 WIDTH, HEIGHT = size()
 
