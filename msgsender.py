@@ -23,7 +23,7 @@ from datetime import datetime
 from re import fullmatch
 
 import pyautogui as pg
-from academic_whatapp.whatsend import core, exceptions, log
+from whatsend import core, exceptions, log
 
 pg.FAILSAFE = False
 
@@ -123,7 +123,7 @@ for i in No:
     else:            
         tim=datetime.now()
         try:
-            sendwhatmsg(i, message=message, time_hour=tim.hour, time_min=tim.minute+1)
+            sendwhatmsg(i, message=msg1, time_hour=tim.hour, time_min=tim.minute+1)
         except:
             print(f'Failed to send message to {i}')
 
