@@ -23,7 +23,7 @@ from datetime import datetime
 from re import fullmatch
 
 import pyautogui as pg
-from pywhatkit.core import core, exceptions, log
+from whatsend import core, exceptions, log
 
 pg.FAILSAFE = False
 
@@ -101,21 +101,21 @@ def check_if_string_in_file(file_name, string_to_search):
     return False
 
  
-#No = ["+254113927737", "+254784116116", "+254799844628"]
+No = ["+254113927737", "+254784116116", "+254799844628", "+254113927737", "+254784116116", "+254799844628"]
 
 
 message = 'Hello, My name is Francis. I\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!'
 
 caption="Here is a sample of a student's class performance for your reference"
-img_path= "./Image1.jpeg"
+img_path= "./images/"
 
 
 
-for i in PhoneNumbers:
-    if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
-#         print(f'{i} already Exists in Database')
-        pass
-    elif check_if_string_in_file('Numbers/Employers.csv', i) == True:
+for i in No:
+#     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
+# #         print(f'{i} already Exists in Database')
+#         pass
+    if check_if_string_in_file('Numbers/Employers.csv', i) == True:
 #         print(f'{i} is an employer')
         pass
     else:            
