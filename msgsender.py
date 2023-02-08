@@ -103,9 +103,11 @@ def check_if_string_in_file(file_name, string_to_search):
  
 No = ["+254113927737", "+254784116116", "+254799844628", "+254113927737", "+254784116116", "+254799844628"]
 
-
-message = 'Hello, My name is Francis. I\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!'
-
+"""Message secton"""
+msg1 = 'Hello'
+msg2 = "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"
+msg3 = "Above are grades for students I have helped"
+msg4 = "Hit me up for such grades at affordable rates"
 caption="Here is a sample of a student's class performance for your reference"
 img_path= "./images/"
 
