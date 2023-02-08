@@ -23,7 +23,7 @@ from datetime import datetime
 from re import fullmatch
 
 import pyautogui as pg
-from whatsend import core, exceptions, log
+from academic_whatapp.whatsend import core, exceptions, log
 
 pg.FAILSAFE = False
 
