@@ -16,7 +16,7 @@ from webbrowser import open
 import requests
 from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
 
-from pywhatkit.core.exceptions import InternetException
+from whatsender.whatsend.exceptions import InternetException
 
 WIDTH, HEIGHT = size()
 
