@@ -7,8 +7,11 @@ Created on Wed Feb  8 20:20:54 2023
 
 import os
 import time
+import sys
 
-from whatsend.core import check_number
+sys.path.insert(0, '../academic_whatapp/whatsend/')
+
+from core import check_number
 
 
 def format_message(message: str) -> str:

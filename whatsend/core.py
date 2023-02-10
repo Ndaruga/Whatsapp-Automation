@@ -5,6 +5,7 @@ Created on Mon Feb  6 16:08:12 2023
 @author: User
 """
 
+import sys
 import os
 import pathlib
 import time
@@ -16,7 +17,8 @@ from webbrowser import open
 import requests
 from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
 
-from whatsend.exceptions import InternetException
+sys.path.insert(0, './academic_whatapp/whatsend/')
+from whatsend import exceptions
 
 WIDTH, HEIGHT = size()
 
@@ -64,7 +66,6 @@ def find_link():
     except Exception:
         location = locateOnScreen(f"{dir_path}\\data\\link2.png")
         moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
-        print(location)
         click()
 def find_document():
     dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -86,7 +87,7 @@ def check_connection() -> None:
     try:
         requests.get("https://google.com")
     except requests.RequestException:
-        raise InternetException(
+        raise exceptions.InternetException(
             "Error while connecting to the Internet. Make sure you are connected to the Internet!"
         )
 
@@ -117,6 +118,10 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
+    
+    print("Here")
+    findtextbox()
+    press("enter")
     findtextbox()
     press("enter")
 
