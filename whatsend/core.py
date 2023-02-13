@@ -46,20 +46,21 @@ def close_tab(wait_time: int = 2) -> None:
 def findtextbox() -> None:
     """click on text box"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile1.png")
     try:
+        location = locateOnScreen(f"{dir_path}\\data\\smile_light.png")
         moveTo(location[0] + 150, location[1] + 5)
         click()
+        print("complete")
     except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\pywhatkit_smile.png")
+        location = locateOnScreen(f"{dir_path}\\data\\smile_dark.png")
         moveTo(location[0] + 150, location[1] + 5)
         click()
+        print("complete----")
 
 
 def find_link():
     dir_path = os.path.dirname(os.path.realpath(__file__))
     location = locateOnScreen(f"{dir_path}\\data\\link.png")
-    print(location)
     try:
         moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
         click()
@@ -118,8 +119,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
-    
-    print("Here")
     findtextbox()
     press("enter")
     findtextbox()
