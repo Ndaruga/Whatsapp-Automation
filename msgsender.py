@@ -8,6 +8,7 @@ Created on Mon Feb  6 17:20:25 2023
 
 import pandas as pd
 import re
+
 Clients=pd.read_csv('Numbers/Clients.csv')
 
 Clients=Clients.values.tolist()
@@ -20,17 +21,13 @@ for i in Clients:
     no = '+'+str(string)
     PhoneNumbers.append(no)
 
-
-import sys
 import time
 import webbrowser as web
 from datetime import datetime
 from re import fullmatch
-
+import log, exceptions, core
 import pyautogui as pg
 
-sys.path.insert(0, './academic_whatapp/whatsend/')
-from whatsend import core, exceptions, log
 
 pg.FAILSAFE = False
 

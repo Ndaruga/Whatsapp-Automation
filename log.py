@@ -9,8 +9,6 @@ import os
 import time
 import sys
 
-sys.path.insert(0, '../academic_whatapp/whatsend/')
-
 from core import check_number
 
 

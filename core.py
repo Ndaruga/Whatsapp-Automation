@@ -15,10 +15,9 @@ from urllib.parse import quote
 from webbrowser import open
 
 import requests
-from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite
+from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite, locateCenterOnScreen
 
-sys.path.insert(0, './academic_whatapp/whatsend/')
-from whatsend import exceptions
+import exceptions
 
 WIDTH, HEIGHT = size()
 
@@ -47,15 +46,17 @@ def findtextbox() -> None:
     """click on text box"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
     try:
-        location = locateOnScreen(f"{dir_path}\\data\\smile_light.png")
+        location = (locateOnScreen(f"{dir_path}\\data\\smile_light.png") or locateOnScreen(f"{dir_path}\\data\\smile_dark.png"))
+        print(f"{location} 1111")
         moveTo(location[0] + 150, location[1] + 5)
         click()
-        print("complete")
     except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\smile_dark.png")
-        moveTo(location[0] + 150, location[1] + 5)
-        click()
-        print("complete----")
+        print("Image not found")
+    #     location = locateOnScreen(f"{dir_path}\\data\\smile_dark.png")
+    #     print(f"{location} 2222")
+    #     moveTo(location[0] + 150, location[1] + 5)
+    #     click()
+        
 
 
 def find_link():
