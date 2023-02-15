@@ -46,14 +46,12 @@ def findtextbox() -> None:
     """click on text box"""
     dir_path = os.path.dirname(os.path.realpath(__file__))
     try:
-        
-        location = locateOnScreen(os.path.join(dir_path, "data", "smile_light.png")) #or locateOnScreen(f"{dir_path}\\data\\smile_dark.png"))
-        print(f"{location} 1111")
+        location = locateOnScreen(os.path.join(dir_path, "data", "smile_light.png")) 
+        # x,y = locateCenterOnScreen(os.path.join(dir_path, "data", "smile_light.png"))
         moveTo(location[0] + 150, location[1] + 5)
         click()
     except Exception:
-        location = locateOnScreen(os.path.join(dir_path, "data", "smile_dark.png"))
-        print(f"{location} 2222")
+        location = locateOnScreen(os.path.join(dir_path, "data", "smile_dark.jpg"))
         moveTo(location[0] + 150, location[1] + 5)
         click()
         
@@ -111,7 +109,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
     """Parses and Sends the Message"""
 
     _web(receiver=receiver, message=message)
-    time.sleep(7)
+    time.sleep(3)
     click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(wait_time - 7)
     if not check_number(number=receiver):
@@ -120,9 +118,7 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
-    findtextbox()
-    press("enter")
-    findtextbox()
+    # findtextbox()
     press("enter")
 
 
@@ -191,3 +187,21 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     findtextbox()
     press("enter")
 
+def send_messages(messages, receiver: str, wait_time: int) -> None:
+    """Parses and Sends the Message"""
+    messages=[]
+    for i in messages:
+        _web(receiver=receiver, message=i)
+        time.sleep(3)
+        click(WIDTH / 2, HEIGHT / 2 + 15)
+
+    time.sleep(wait_time - 7)
+    if not check_number(number=receiver):
+        for char in messages:
+            
+            if char == "\n":
+                hotkey("shift", "enter")
+            else:
+                typewrite(char)
+    # findtextbox()
+    press("enter")

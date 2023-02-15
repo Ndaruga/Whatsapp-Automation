@@ -84,7 +84,7 @@ def sendwhatmsg(
     )
     
     time.sleep(sleep_time)
-    core.send_message(message=message, receiver=phone_no, wait_time=wait_time)
+    core.send_messages(messages=message, receiver=phone_no, wait_time=wait_time)
  
     if tab_close:
         core.close_tab(wait_time=2)
@@ -113,9 +113,10 @@ msg2 = "My name is Francis. \nI\'m a software developer and an academic tutor. \
 msg3 = "Above are grades for students I have helped"
 msg4 = "Hit me up for such grades at affordable rates"
 caption="Here is a sample of a student's class performance for your reference"
+
 img_path= "./images/"
 
-
+message=[msg1, msg2]
 
 for i in No:
 #     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
@@ -127,7 +128,7 @@ for i in No:
     else:            
         tim=datetime.now()
         try:
-            sendwhatmsg(i, message=msg1, time_hour=tim.hour, time_min=tim.minute+1)
+            sendwhatmsg(i, message=message, time_hour=tim.hour, time_min=tim.minute+1)
         except:
             print(f'Failed to send message to {i}')
 
