@@ -112,7 +112,7 @@ msg1 = 'Hello'
 msg2 = "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"
 msg3 = "Above are grades for students I have helped"
 msg4 = "Hit me up for such grades at affordable rates"
-caption="Here is a sample of a student's class performance for your reference"
+
 
 img_path= "./images/"
 

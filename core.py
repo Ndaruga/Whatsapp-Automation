@@ -187,21 +187,3 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     findtextbox()
     press("enter")
 
-def send_messages(messages, receiver: str, wait_time: int) -> None:
-    """Parses and Sends the Message"""
-    messages=[]
-    for i in messages:
-        _web(receiver=receiver, message=i)
-        time.sleep(3)
-        click(WIDTH / 2, HEIGHT / 2 + 15)
-
-    time.sleep(wait_time - 7)
-    if not check_number(number=receiver):
-        for char in messages:
-            
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
-    # findtextbox()
-    press("enter")
