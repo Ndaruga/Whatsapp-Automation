@@ -51,10 +51,9 @@ def open_web() -> bool:
 
 def sendwhatmsg(
         phone_no: str,
-        message: str,
         time_hour: int,
         time_min: int,
-        wait_time: int = 15,
+        wait_time: int = 2,
         tab_close: bool = True,
         close_time: int = 15,
 ) -> None:
@@ -87,14 +86,11 @@ def sendwhatmsg(
         f"In {sleep_time} Seconds WhatsApp will open and Message will be Delivered to {phone_no}!"
     )
     
-    time.sleep(sleep_time)
     core.send_messages(receiver=phone_no)
     log.log_message(_time=current_time, receiver=phone_no)
 
     if tab_close:
         _core.close_tab(wait_time=2)
-
-
 
 
 def check_if_string_in_file(file_name, string_to_search):
@@ -105,20 +101,21 @@ def check_if_string_in_file(file_name, string_to_search):
     return False
 
 
-No = ["+254113927737", "+254784116116", "+254799844628", "+254113927737", "+254784116116", "+254799844628"]
+No = ["+254113927737", "+254784116116",  "+254113927737",  "+254799844628"]
 
 for i in No:
     if check_if_string_in_file('Success_log.txt', i) == True:
 #         print(f'{i} already Exists in Database')
         pass
-    if check_if_string_in_file('Numbers/Employers.txt', i) == True:
+    elif check_if_string_in_file('Numbers/Employers.txt', i) == True:
 #         print(f'{i} is an employer')
         pass
     else:            
         tim=datetime.now()
-        try:
-            sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
-        except:
-            print(f'Failed to send message to {i}')
+        sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
+        # try:
+        #     sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
+        # except:
+        #     print(f'Failed to send message to {i}')
 
 
