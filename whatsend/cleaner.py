@@ -46,9 +46,12 @@ counts = dict(Counter(data))
 
 for key, value in counts.items():
     if value > 2:
-        with open(os.path.join("Numbers", "Employers.txt"), 'a', encoding="utf-8") as f:
-            f.write(f"{key}\n")
-            f.close()
+        with open(os.path.join("Numbers", "Employers.txt"), 'a+', encoding="utf-8") as f:
+            if str(key) in f.read():
+                pass
+            else:
+                f.write(f"{key}\n")
+                f.close()
     else:
         with open(os.path.join("Numbers", "Clients.txt"), 'a', encoding="utf-8") as f:
             f.write(f"{key}\n")

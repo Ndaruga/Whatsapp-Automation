@@ -108,9 +108,9 @@ def check_if_string_in_file(file_name, string_to_search):
 No = ["+254113927737", "+254784116116", "+254799844628", "+254113927737", "+254784116116", "+254799844628"]
 
 for i in No:
-#     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
-# #         print(f'{i} already Exists in Database')
-#         pass
+    if check_if_string_in_file('Success_log.txt', i) == True:
+#         print(f'{i} already Exists in Database')
+        pass
     if check_if_string_in_file('Numbers/Employers.txt', i) == True:
 #         print(f'{i} is an employer')
         pass
