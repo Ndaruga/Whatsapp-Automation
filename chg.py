@@ -60,26 +60,21 @@ def copy_image(path: str) -> None:
 
 
 def find_message_box(message:str):
-    for char in message:
-        if len(char) > 20:
-            write(char)
-        else:
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
-    time.sleep(2)
+    write(message)
+    time.sleep(.75)
     press("enter")
+    time.sleep(1.25)
 
 # img_dir = os.path.join(os.path.dirname(__file__), "images")
 img_dir = "./images/"
 
 
-messages=["Hello", "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"]
+# messages1=["Hello", "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndarugaa \nThank you!"]
+messages1=["Hello", "My name is Francis. I'm a skilled tutor who can complete your work to your satisfaction. If you need extra help, either for lessons, assignments, projects, quizzes or brushing up before finals, I'm here to help. Available 24/7, I'm not limited to niche, I cover a wide range of topics across many disciplines."]
+messages2=["Above are grades for students I have helped","Hit me up for such grades at affordable rates"]
 
 def send_image(path: str) -> None:
-
-    time.sleep(2)
+    time.sleep(1)
     click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(1)
     copy_image(path=path)
@@ -87,22 +82,25 @@ def send_image(path: str) -> None:
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
-    time.sleep(1)
     press("enter")
 
-
-
-def send_messages(receiver: str, wait_time: int) -> None:
-    """Parses and Sends the Message"""
-    _web(receiver=receiver)
-    time.sleep(15)
-    for i in messages:
-        find_message_box(i)
+def image_send():
     for imgs in os.listdir(img_dir):
         send_image(os.path.join(img_dir, imgs))
 
+def send_messages(receiver: str) -> None:
+    """Parses and Sends the Message"""
+    _web(receiver=receiver)
+    time.sleep(15)
+    for i in messages1:
+        find_message_box(i)
+    image_send()
+    time.sleep(2)
+    for i in messages2:
+        find_message_box(i)
+
     
 
-send_messages("+254784116116", 20)
+send_messages("+254784116116")
 
 
