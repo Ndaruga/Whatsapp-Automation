@@ -1,126 +1,26 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Feb  6 16:08:12 2023
-
-@author: User
-"""
-
-import sys
 import os
 import pathlib
 import time
-import keyboard
-from platform import system
-from urllib.parse import quote
 from webbrowser import open
+from pyautogui import hotkey, press, size, write
+from platform import system
 
-import requests
-from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite, locateCenterOnScreen
-
-import exceptions
-
-WIDTH, HEIGHT = size()
-
+# WIDTH, HEIGHT = size()
 
 def check_number(number: str) -> bool:
     """Checks the Number to see if contains the Country Code"""
 
     return "+" in number or "_" in number
 
-
-def close_tab(wait_time: int = 2) -> None:
-    """Closes the Currently Opened Browser Tab"""
-
-    time.sleep(wait_time)
-    _system = system().lower()
-    if _system in ("windows", "linux"):
-        hotkey("ctrl", "w")
-    elif _system == "darwin":
-        hotkey("command", "w")
-    else:
-        raise Warning(f"{_system} not supported!")
-    press("enter")
-
-
-def findtextbox() -> None:
-    """click on text box"""
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    try:
-        location = locateOnScreen(os.path.join(dir_path, "data", "smile_light.png")) 
-        # x,y = locateCenterOnScreen(os.path.join(dir_path, "data", "smile_light.png"))
-        moveTo(location[0] + 150, location[1] + 5)
-        click()
-    except Exception:
-        location = locateOnScreen(os.path.join(dir_path, "data", "smile_dark.jpg"))
-        moveTo(location[0] + 150, location[1] + 5)
-        click()
-        
-
-
-def find_link():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\link.png")
-    try:
-        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
-        click()
-    except Exception:
-        location = locateOnScreen(f"{dir_path}\\data\\link2.png")
-        moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
-        click()
-def find_document():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\document.png")
-    print(location)
-    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
-    click()
-
-def find_photo_or_video():
-    dir_path = os.path.dirname(os.path.realpath(__file__))
-    location = locateOnScreen(f"{dir_path}\\data\\photo_or_video.png")
-    print(location)
-    moveTo(location[0] + location[2]/2, location[1] + location[3]/2)
-    click()
-
-def check_connection() -> None:
-    """Check the Internet connection of the Host Machine"""
-
-    try:
-        requests.get("https://google.com")
-    except requests.RequestException:
-        raise exceptions.InternetException(
-            "Error while connecting to the Internet. Make sure you are connected to the Internet!"
-        )
-
-
-def _web(receiver: str, message: str) -> None:
+def _web(receiver: str) -> None:
     """Opens WhatsApp Web based on the Receiver"""
     if check_number(number=receiver):
-        open(
-            "https://web.whatsapp.com/send?phone="
-            + receiver
-            + "&text="
-            + quote(message)
-        )
+        open(f"https://web.whatsapp.com/send?phone={receiver}")
+            # + "&text="
+            # + quote(message)
     else:
         open("https://web.whatsapp.com/accept?code=" + receiver)
-
-
-def send_message(message: str, receiver: str, wait_time: int) -> None:
-    """Parses and Sends the Message"""
-
-    _web(receiver=receiver, message=message)
-    time.sleep(3)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
-    time.sleep(wait_time - 7)
-    if not check_number(number=receiver):
-        for char in message:
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
-    # findtextbox()
-    press("enter")
-
+    
 
 def copy_image(path: str) -> None:
     """Copy the Image to Clipboard based on the Platform"""
@@ -163,26 +63,45 @@ def copy_image(path: str) -> None:
         raise Exception(f"Unsupported System: {_system}")
 
 
-def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
-    """Sends the Image to a Contact or a Group based on the Receiver"""
+def find_message_box(message:str):
+    write(message)
+    time.sleep(.75)
+    press("enter")
+    time.sleep(1.25)
 
-    _web(message=caption, receiver=receiver)
-    time.sleep(7)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
-    time.sleep(wait_time - 7)
+# img_dir = os.path.join(os.path.dirname(__file__), "images")
+img_dir = "./images/"
+
+
+# messages1=["Hello", "My name is Francis. I'm a software developer and an academic tutor. If you feel you need help with your projects,  assignments, quizzes or classes, please don't hesitate to reach out. Feel free to check my profile and recent projects https://github.com/Ndarugaa "]
+messages1=["Hello", "I'm a skilled tutor who can complete your work to your satisfaction. If you need extra help, either for lessons, assignments, projects, quizzes or brushing up before finals, I'm here to help. Available 24/7, I'm not limited to niche, I cover a wide range of topics across many disciplines."]
+messages2=["Above are grades for students I have helped","Hit me up for such grades at affordable rates"]
+
+def send_image(path: str) -> None:
+    time.sleep(1)
+    # click(WIDTH / 2, HEIGHT / 2 + 15)
+    time.sleep(1)
     copy_image(path=path)
-    if not check_number(number=receiver):
-        for char in caption:
-            if char == "\n":
-                hotkey("shift", "enter")
-            else:
-                typewrite(char)
-    else:
-        typewrite(" ")
     if system().lower() == "darwin":
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
-    time.sleep(1)
-    findtextbox()
     press("enter")
+
+def image_send():
+    for imgs in os.listdir(img_dir):
+        send_image(os.path.join(img_dir, imgs))
+
+def send_messages(receiver: str) -> None:
+    """Parses and Sends the Message"""
+    _web(receiver=receiver)
+    time.sleep(15)
+    for i in messages1:
+        find_message_box(i)
+    image_send()
+    time.sleep(2)
+    for i in messages2:
+        find_message_box(i)
+
+
+

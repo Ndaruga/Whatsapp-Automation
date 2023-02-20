@@ -8,6 +8,7 @@ Created on Mon Feb  6 17:20:25 2023
 
 import pandas as pd
 import re
+import _core
 
 Clients=pd.read_csv('Numbers/Clients.csv')
 
@@ -31,7 +32,7 @@ import pyautogui as pg
 
 pg.FAILSAFE = False
 
-core.check_connection()
+_core.check_connection()
 
 def open_web() -> bool:
     """Opens WhatsApp Web"""
@@ -84,16 +85,12 @@ def sendwhatmsg(
     )
     
     time.sleep(sleep_time)
-    core.send_messages(messages=message, receiver=phone_no, wait_time=wait_time)
- 
+    core.send_messages(receiver=phone_no)
+    log.log_message(_time=current_time, receiver=phone_no)
+
     if tab_close:
-        core.close_tab(wait_time=2)
-        
-    core.send_image(path=img_path, caption=caption, receiver=phone_no, wait_time=wait_time)
-    
-    log.log_message(_time=current_time, receiver=phone_no, message=message)
-    if tab_close:
-        core.close_tab(wait_time=3)
+        _core.close_tab(wait_time=2)
+
 
 
 
@@ -104,19 +101,8 @@ def check_if_string_in_file(file_name, string_to_search):
                 return True
     return False
 
- 
+
 No = ["+254113927737", "+254784116116", "+254799844628", "+254113927737", "+254784116116", "+254799844628"]
-
-"""Message secton"""
-msg1 = 'Hello'
-msg2 = "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"
-msg3 = "Above are grades for students I have helped"
-msg4 = "Hit me up for such grades at affordable rates"
-
-
-img_path= "./images/"
-
-message=[msg1, msg2]
 
 for i in No:
 #     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
@@ -128,7 +114,7 @@ for i in No:
     else:            
         tim=datetime.now()
         try:
-            sendwhatmsg(i, message=message, time_hour=tim.hour, time_min=tim.minute+1)
+            sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
         except:
             print(f'Failed to send message to {i}')
 

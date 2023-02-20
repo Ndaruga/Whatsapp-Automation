@@ -7,45 +7,27 @@ Created on Wed Feb  8 20:20:54 2023
 
 import os
 import time
-import sys
-
-from core import check_number
+import core
 
 
-def format_message(message: str) -> str:
-    """Formats the Message to remove redundant Spaces and Newline chars"""
-    msg_l = message.split(" ")
-    new = []
-    for x in msg_l:
-        if "\n" in x:
-            x = x.replace("\n", "")
-            new.append(x) if not len(x) == 0 else None
-
-        elif len(x) != 0:
-            new.append(x)
-
-    return " ".join(new)
-
-
-def log_message(_time: time.struct_time, receiver: str, message: str) -> None:
+def log_message(_time: time.struct_time, receiver: str) -> None:
     """Logs the Message Information after it is Sent"""
 
     if not os.path.exists("PyWhatKit_DB.txt"):
         file = open("PyWhatKit_DB.txt", "w+")
         file.close()
 
-    message = format_message(message)
 
     with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
-        if check_number(receiver):
+        if core.check_number(receiver):
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
-                f"Phone Number: {receiver}\nMessage: {message}"
+                f"Phone Number: {receiver}"
             )
         else:
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
-                f"Group ID: {receiver}\nMessage: {message}"
+                f"Group ID: {receiver}"
             )
         file.write("\n--------------------\n")
         file.close()
@@ -58,19 +40,18 @@ def log_image(_time: time.struct_time, path: str, receiver: str, caption: str) -
         file = open("PyWhatKit_DB.txt", "w+")
         file.close()
 
-    caption = format_message(caption)
 
     with open("PyWhatKit_DB.txt", "a", encoding="utf-8") as file:
-        if check_number(number=receiver):
+        if core.check_number(number=receiver):
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
-                f"Phone Number: {receiver}\nImage: {path}\nCaption: {caption}"
+                f"Phone Number: {receiver}\nImage: {path}"
             )
 
         else:
             file.write(
                 f"Date: {_time.tm_mday}/{_time.tm_mon}/{_time.tm_year}\nTime: {_time.tm_hour}:{_time.tm_min}\n"
-                f"Group ID: {receiver}\nImage: {path}\nCaption: {caption}"
+                f"Group ID: {receiver}\nImage: {path}"
             )
         file.write("\n--------------------\n")
         file.close()
