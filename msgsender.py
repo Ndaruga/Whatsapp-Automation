@@ -112,10 +112,10 @@ for i in No:
         pass
     else:            
         tim=datetime.now()
-        sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
-        # try:
-        #     sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
-        # except:
-        #     print(f'Failed to send message to {i}')
+        # sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
+        try:
+            sendwhatmsg(i, time_hour=tim.hour, time_min=tim.minute+1)
+        except:
+            print(f'Failed to send message to {i}')
 
 
