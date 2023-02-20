@@ -99,6 +99,7 @@ def send_messages(receiver: str) -> None:
     for i in messages1:
         find_message_box(i)
     image_send()
+    press("enter")
     time.sleep(3)
     for i in messages2:
         find_message_box(i)
