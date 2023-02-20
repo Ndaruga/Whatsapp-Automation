@@ -186,4 +186,3 @@ def send_image(path: str, caption: str, receiver: str, wait_time: int) -> None:
     time.sleep(1)
     findtextbox()
     press("enter")
-

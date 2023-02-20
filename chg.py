@@ -3,8 +3,10 @@ import core
 import pathlib
 import time
 from webbrowser import open
-from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite, write
+from pyautogui import click, hotkey, press, size, typewrite, write
 from platform import system
+
+WIDTH, HEIGHT = size()
 
 def _web(receiver: str) -> None:
     """Opens WhatsApp Web based on the Receiver"""
@@ -69,21 +71,25 @@ def find_message_box(message:str):
     time.sleep(2)
     press("enter")
 
+# img_dir = os.path.join(os.path.dirname(__file__), "images")
+img_dir = "./images/"
 
-path= "./images"
 
-messages = ["Hello There", "My name is Francis"]
-# messages=["Hello", "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"]
+messages=["Hello", "My name is Francis. \nI\'m a software developer and an academic tutor. \nIf you feel you need help with your projects,  assignments, quizzes or classes, please don\'t hesitate to reach out.\nFeel free to check my profile and recent projects https://github.com/Ndaruga \nThank you!"]
 
-def send_image(img_path: str) -> None:
-    for img in os.listdir(img_path):
-        copy_image(path=img)
-        if system().lower() == "darwin":
-            hotkey("command", "v")
-        else:
-            hotkey("ctrl", "v")
-        time.sleep(1)
-        press("enter")
+def send_image(path: str) -> None:
+
+    time.sleep(2)
+    click(WIDTH / 2, HEIGHT / 2 + 15)
+    time.sleep(1)
+    copy_image(path=path)
+    if system().lower() == "darwin":
+        hotkey("command", "v")
+    else:
+        hotkey("ctrl", "v")
+    time.sleep(1)
+    press("enter")
+
 
 
 def send_messages(receiver: str, wait_time: int) -> None:
@@ -92,7 +98,11 @@ def send_messages(receiver: str, wait_time: int) -> None:
     time.sleep(15)
     for i in messages:
         find_message_box(i)
-    send_image(path)
+    for imgs in os.listdir(img_dir):
+        send_image(os.path.join(img_dir, imgs))
+
     
 
 send_messages("+254784116116", 20)
+
+
