@@ -8,9 +8,12 @@ Created on Mon Feb  6 17:20:25 2023
 
 import pandas as pd
 import re
-import _core
+import os
+import whatsend._core as _core
+import whatsend.core as core
+import whatsend.cleaner as cleaner
 
-Clients=pd.read_csv('Numbers/Clients.csv')
+Clients=pd.read_table(os.path.join("Numbers", "clients.txt"), header=0)
 
 Clients=Clients.values.tolist()
 
@@ -26,7 +29,7 @@ import time
 import webbrowser as web
 from datetime import datetime
 from re import fullmatch
-import log, exceptions, core
+import whatsend.log as log, whatsend.exceptions as exceptions, whatsend.core as core
 import pyautogui as pg
 
 
@@ -51,7 +54,7 @@ def sendwhatmsg(
         message: str,
         time_hour: int,
         time_min: int,
-        wait_time: int = 20,
+        wait_time: int = 15,
         tab_close: bool = True,
         close_time: int = 15,
 ) -> None:
@@ -108,7 +111,7 @@ for i in No:
 #     if check_if_string_in_file('PyWhatKit_DB.txt', i) == True:
 # #         print(f'{i} already Exists in Database')
 #         pass
-    if check_if_string_in_file('Numbers/Employers.csv', i) == True:
+    if check_if_string_in_file('Numbers/Employers.txt', i) == True:
 #         print(f'{i} is an employer')
         pass
     else:            

@@ -17,7 +17,7 @@ from webbrowser import open
 import requests
 from pyautogui import click, hotkey, locateOnScreen, moveTo, press, size, typewrite, locateCenterOnScreen
 
-import exceptions
+import whatsend.exceptions as exceptions
 
 WIDTH, HEIGHT = size()
 
@@ -118,7 +118,6 @@ def send_message(message: str, receiver: str, wait_time: int) -> None:
                 hotkey("shift", "enter")
             else:
                 typewrite(char)
-    # findtextbox()
     press("enter")
 
 
