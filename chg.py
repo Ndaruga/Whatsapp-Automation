@@ -75,7 +75,7 @@ messages2=["Above are grades for students I have helped","Hit me up for such gra
 
 def send_image(path: str) -> None:
     time.sleep(1)
-    click(WIDTH / 2, HEIGHT / 2 + 15)
+    # click(WIDTH / 2, HEIGHT / 2 + 15)
     time.sleep(1)
     copy_image(path=path)
     if system().lower() == "darwin":
@@ -101,6 +101,6 @@ def send_messages(receiver: str) -> None:
 
     
 
-send_messages("+254784116116")
+send_messages("+254799844628")
 
 
