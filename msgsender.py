@@ -101,9 +101,9 @@ def check_if_string_in_file(file_name, string_to_search):
     return False
 
 
-No = ["+254113927737", "+254784116116",  "+254113927737",  "+254799844628"]
+# No = ["+254113927737", "+254784116116",  "+254113927737",  "+254799844628"]
 
-for i in No:
+for i in PhoneNumbers:
     if check_if_string_in_file('Success_log.txt', i) == True:
 #         print(f'{i} already Exists in Database')
         pass
