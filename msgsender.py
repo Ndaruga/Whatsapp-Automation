@@ -19,6 +19,7 @@ Clients=Clients.values.tolist()
 
 
 PhoneNumbers=[]
+
 for i in Clients:
     string = re.sub('[\W\_]','',str(i))
     no = '+'+str(string)

@@ -80,7 +80,6 @@ messages2=["Above are grades for students I have helped","Hit me up for such gra
 def send_image(path: str) -> None:
     time.sleep(1)
     # click(WIDTH / 2, HEIGHT / 2 + 15)
-    time.sleep(1)
     copy_image(path=path)
     if system().lower() == "darwin":
         hotkey("command", "v")
@@ -91,15 +90,15 @@ def send_image(path: str) -> None:
 def image_send():
     for imgs in os.listdir(img_dir):
         send_image(os.path.join(img_dir, imgs))
+        press("enter")
 
 def send_messages(receiver: str) -> None:
     """Parses and Sends the Message"""
     _web(receiver=receiver)
-    time.sleep(12)
+    time.sleep(15)
     for i in messages1:
         find_message_box(i)
     image_send()
-    press("enter")
     time.sleep(3)
     for i in messages2:
         find_message_box(i)
