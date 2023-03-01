@@ -89,6 +89,7 @@ def send_image(path: str) -> None:
 def image_send():
     for imgs in os.listdir(img_dir):
         send_image(os.path.join(img_dir, imgs))
+        time.sleep(0.5)
         press("enter")
 
 def send_messages(receiver: str) -> None:

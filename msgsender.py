@@ -16,6 +16,7 @@ Clients=pd.read_table(os.path.join("Numbers", "clients.txt"), header=0)
 
 Clients=Clients.values.tolist()
 
+
 PhoneNumbers=[]
 
 for i in Clients:
@@ -48,6 +49,7 @@ def open_web() -> bool:
 
 
 def sendwhatmsg(
+        
         phone_no: str,
         time_hour: int,
         time_min: int,
