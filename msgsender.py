@@ -10,7 +10,7 @@ import re
 import os
 import whatsend._core as _core
 import whatsend.core as core
-# import whatsend.cleaner as cleaner
+import whatsend.cleaner as cleaner
 
 Clients=pd.read_table(os.path.join("Numbers", "clients.txt"), header=0)
 
@@ -100,8 +100,6 @@ def check_if_string_in_file(file_name, string_to_search):
                 return True
     return False
 
-
-# No = ["+254113927737", "+254784116116",  "+254113927737",  "+254799844628"]
 
 
 for i in PhoneNumbers:
