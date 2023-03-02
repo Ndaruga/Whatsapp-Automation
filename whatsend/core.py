@@ -91,6 +91,7 @@ def image_send():
         send_image(os.path.join(img_dir, imgs))
         time.sleep(0.5)
         press("enter")
+        
 
 def send_messages(receiver: str) -> None:
     """Parses and Sends the Message"""
