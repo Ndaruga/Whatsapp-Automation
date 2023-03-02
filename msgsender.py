@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Feb  6 17:20:25 2023
-Above are grades for students I have helped
-Hit me up for such tasks at a
+
 @author: Francis
 """
 
