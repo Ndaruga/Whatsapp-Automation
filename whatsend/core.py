@@ -81,6 +81,7 @@ def send_image(path: str) -> None:
     # click(WIDTH / 2, HEIGHT / 2 + 15)
     copy_image(path=path)
     if system().lower() == "darwin":
+
         hotkey("command", "v")
     else:
         hotkey("ctrl", "v")
@@ -100,11 +101,11 @@ def send_messages(receiver: str) -> None:
     for i in messages1:
         time.sleep(1)
         find_message_box(i)
-    image_send()
-    time.sleep(2)
-    for i in messages2:
-        find_message_box(i)
-        time.sleep(1)
+    # image_send()
+    # time.sleep(2)
+    # for i in messages2:
+    #     find_message_box(i)
+    #     time.sleep(1)
 
 
 
