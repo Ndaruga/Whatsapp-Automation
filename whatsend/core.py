@@ -73,7 +73,7 @@ img_dir = "./images/"
 
 
 # messages1=["Hello", "My name is Francis. I'm a software developer and an academic tutor. If you feel you need help with your projects,  assignments, quizzes or classes, please don't hesitate to reach out. Feel free to check my profile and recent projects https://github.com/Ndarugaa "]
-messages1=["Hello", "My name is Francis. I'm a skilled tutor who can complete your work to your satisfaction. If you need extra help, either for lessons, assignments, projects, quizzes or brushing up before finals, I'm here to help. Available 24/7, I'm not limited to niche, I cover a wide range of topics across many disciplines.", "Feel free to check my profile and recent projects https://github.com/Ndarugaa "]
+messages1=["Hello", "I am named Francis. I am a tutor who can satisfactorily do your assignment. If you need assistance with classes, projects, exams, or finals review, I'm here to help. I'm available 24/7, and I'm not confined to a certain expertise; I cover a vast array of topics throughout several disciplines.", "Feel free to check my profile and recent projects https://github.com/Ndarugaa"]
 messages2=["Above are grades for students I have helped","Hit me up for such tasks at affordable rates"]
 
 def send_image(path: str) -> None:
