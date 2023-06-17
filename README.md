@@ -18,11 +18,16 @@ If there is no image in the folder then just the text message(s) will be sent<br
 
 ## Run
 To execute depending on the python versio in use, run `python msgsender.py` or `python3 msgsender.py`<br>
+Whatsapp web will open automatically with the phonenumber and write a text message.<br>
+<h4>The same way you can only write the message on the foreground, this Automtion does not run in the background.<br>
+  This means that, for now you should let the automation run uninterupted</h4>
+
 All successfully texted contacts will be stored in the `success_log.txt` file.
 
+##### NOTE: The process only terminates when all contacts have been texted. This might violate whatsapp terms of service and could lead to a Ban. If you wish to terminate the process, kill the terminal
 
 ## Future
-Allow text messages to be run in the background
+Allow text messages to be run in the background<br>
 Create an interface to upload images and text
 
 
