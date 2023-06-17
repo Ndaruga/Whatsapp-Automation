@@ -71,10 +71,8 @@ def find_message_box(message:str):
 # img_dir = os.path.join(os.path.dirname(__file__), "images")
 img_dir = "./images/"
 
-
-# messages1=["Hello", "My name is Francis. I'm a software developer and an academic tutor. If you feel you need help with your projects,  assignments, quizzes or classes, please don't hesitate to reach out. Feel free to check my profile and recent projects https://github.com/Ndarugaa "]
-messages1=["Hello", "I am Francis. I am a tutor who can satisfactorily do your projects. If you need assistance with classes or projects, I'm here to help. I'm available 24/7, and I'm not confined to a certain expertise; I cover a vast array of topics throughout several disciplines.", "Feel free to check my profile and recent projects https://github.com/Ndarugaa", "Reach out to me If you feel I can be of help"]
-messages2=["Above are grades for students I have helped","Hit me up for such tasks at affordable rates"]
+messages1=["Hello", "My name is Francis. I'm a software developer and an academic tutor. If you feel you need help with your projects, please don't hesitate to reach out. Feel free to check my profile and recent projects https://github.com/Ndarugaa "]
+messages2=["Hit me up for such tasks at affordable rates"]
 
 def send_image(path: str) -> None:
     time.sleep(1)
